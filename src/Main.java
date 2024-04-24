@@ -3,26 +3,45 @@
 public class Main {
     public static void main(String[] args) {
 
+        // select the word
         PossibleWords wordList = new PossibleWords();
         String selectedWord = wordList.getWord();
 
+
+        // create the char array
+        ResultsOfGuess wordsToBeSearched = new ResultsOfGuess(selectedWord);
+
+
+        // establish the possible actions
+        UserInterface control = new UserInterface();
+        String[] commandOptions = new String[] {"please enter a single letter and press enter","Correct", "Incorrect", "Well done you won"};
+        control.setCommands(commandOptions);
+
+
         // WELCOME
-        System.out.println("Welcome to Hangman! The clue to your word is laid out below.");
+        control.printGreeting(selectedWord);
 
-        for (int i= 0; i < selectedWord.length(); i++) {
-            System.out.print("_ ");
+
+
+        while(!wordsToBeSearched.allLettersFound()) {
+            System.out.println(control.getCommands(0));
+            String input = control.getStringInput();
+            if (selectedWord.contains(input)) {
+                System.out.println(control.getCommands(1));
+                System.out.println(wordsToBeSearched.revealLetters(input));
+            }
+            else {
+                System.out.println(control.getCommands(2));
+            }
         }
-        System.out.println();
+        System.out.println(control.getCommands(3));
 
-        UserInterface firstCommand = new UserInterface();
 
-        String[] commandOptions = new String[] {"please enter a single letter and press enter","Do something else", "Quit"};
-        firstCommand.setCommands(commandOptions);
 
-        // FIRST INSTRUCTION AND RECEIPT
-        System.out.println(firstCommand.getCommands(0));
-        String input = firstCommand.getStringInput();
+
+
         }
 
-        // this is the only change on the branch Receiving-Input
+
+
     }
