@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class UserInterface {
 
     private final Scanner scanner = new Scanner(System.in);
-    private String[] commands = {"please enter a single letter and press enter","Correct", "Incorrect, you lose a life.", "Well done you won"};
+    private final String[] commands = {"please enter a single letter and press enter","Correct", "Incorrect, you lose a life.", "Well done you won"};
     private int numberOflives = 3;
 
     public String getCommands(int input) {
@@ -28,10 +28,5 @@ public class UserInterface {
         numberOflives = numberOflives - 1;
         System.out.print("only" + numberOflives + "remaining");
     }
-
-    public int getNumberOfLives() {
-        return numberOflives;
-    }
-
 
 }

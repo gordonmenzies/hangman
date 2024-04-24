@@ -25,17 +25,9 @@ public class Main {
             }
             else {
                 System.out.println(control.getCommands(2));
-
+                control.reduceNumberOfLives();
             }
         }
         System.out.println(control.getCommands(3));
-
-
-
-
-
         }
-
-
-
     }

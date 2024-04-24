@@ -2,6 +2,7 @@ public class Game {
 
     private final String[] listOfWords = {"Chicken", "Tomboy", "Neanderthal"};
 
+
     private int generateRandomNumber() {
         int min = 0;
         int max = listOfWords.length -1;

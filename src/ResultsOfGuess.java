@@ -4,11 +4,13 @@ public class ResultsOfGuess {
 
     private final String selectedWord;
     private final char[] letterIndex;
+    private char[] guesses;
 
     public ResultsOfGuess(String selectedString) {
         this.selectedWord = selectedString;
         this.letterIndex = new char[selectedString.length()];
         Arrays.fill(letterIndex, '_');
+        this.guesses = new char[selectedString.length()];
     }
 
     public boolean allLettersFound() {
