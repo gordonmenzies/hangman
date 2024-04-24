@@ -3,51 +3,30 @@ import java.util.Scanner;
 public class UserInterface {
 
     private final Scanner scanner = new Scanner(System.in);
-    private String name = "the name of the scanner";
-    private String[] commands = {};
-
-    // getters and setters
-    public String getName() {
-        return name;
-    }
+    private final String[] commands = {"please enter a single letter and press enter","Correct", "Incorrect, you lose a life.", "Well done you won"};
+    private int numberOflives = 3;
 
     public String getCommands(int input) {
         return commands[input];
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setCommands(String[] commands) {
-        this.commands = commands;
-    }
-
-//    public void printGreetings() {
-//        System.out.println("Welcome " + this.name);
-//    }
-
-    public void printCommands() {
-        if (this.commands.length == 0) {
-            System.out.println("No current commands set");
-        } else {
-            System.out.print("Please select an option");
-            for (int i = 0; i < commands.length; i++) {
-                System.out.print(" " + i + " " + commands[i]);
-            }
+    public void printGreeting(String selectedWord) {
+        System.out.println("Welcome to Hangman! The clue to your word is laid out below.");
+        System.out.println("You have " + numberOflives + " lives");
+        System.out.println("selected word: " + selectedWord);
+        for (int i= 0; i < selectedWord.length(); i++) {
+            System.out.print("_");
         }
+        System.out.println();
     }
 
     public String getStringInput() {
         return scanner.nextLine();
     }
 
-//    public int getIntegerInput() {
-//        return scanner.nextInt();
-//    }
-//
-//
-//    public String getStringInput(int input) {
-//        return String.valueOf(input);
-//    }
+    public void reduceNumberOfLives() {
+        numberOflives = numberOflives - 1;
+        System.out.print("only" + numberOflives + "remaining");
+    }
+
 }

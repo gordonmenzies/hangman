@@ -3,24 +3,31 @@
 public class Main {
     public static void main(String[] args) {
 
-        PossibleWords wordList = new PossibleWords();
+        // select the word
+        Game wordList = new Game();
         String selectedWord = wordList.getWord();
 
-        // WELCOME
-        System.out.println("Welcome to Hangman! The clue to your word is laid out below.");
+        // create the char array
+        ResultsOfGuess wordsToBeSearched = new ResultsOfGuess(selectedWord);
 
-        for (int i= 0; i < selectedWord.length(); i++) {
-            System.out.print("_ ");
+        // establish the possible actions
+        UserInterface control = new UserInterface();
+
+        // welcome
+        control.printGreeting(selectedWord);
+
+        while(!wordsToBeSearched.allLettersFound()) {
+            System.out.println(control.getCommands(0));
+            String input = control.getStringInput();
+            if (selectedWord.contains(input)) {
+                System.out.println(control.getCommands(1));
+                System.out.println(wordsToBeSearched.revealLetters(input));
+            }
+            else {
+                System.out.println(control.getCommands(2));
+                control.reduceNumberOfLives();
+            }
         }
-        System.out.println();
-
-        UserInterface firstCommand = new UserInterface();
-
-        String[] commandOptions = new String[] {"please enter a single letter and press enter","Do something else", "Quit"};
-        firstCommand.setCommands(commandOptions);
-
-        // FIRST INSTRUCTION AND RECEIPT
-        System.out.println(firstCommand.getCommands(0));
-        String input = firstCommand.getStringInput();
+        System.out.println(control.getCommands(3));
         }
     }

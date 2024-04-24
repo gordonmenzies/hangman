@@ -1,9 +1,7 @@
-import java.sql.Array;
-import java.util.ArrayList;
+public class Game {
 
-public class PossibleWords {
+    private final String[] listOfWords = {"Chicken", "Tomboy", "Neanderthal"};
 
-    String[] listOfWords = {"Chicken", "Tomboy", "Neanderthal"};
 
     private int generateRandomNumber() {
         int min = 0;
@@ -13,8 +11,7 @@ public class PossibleWords {
 
     public String getWord() {
         int selected = generateRandomNumber();
-        return listOfWords[selected];
+        return listOfWords[selected].toLowerCase();
     }
-
 
 }
