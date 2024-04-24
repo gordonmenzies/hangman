@@ -5,21 +5,21 @@ public class Main {
 
         // select the word
         Game wordList = new Game();
-        String selectedWord = wordList.getWord();
+        wordList.selectRandomWord();
 
         // create the char array
-        ResultsOfGuess wordsToBeSearched = new ResultsOfGuess(selectedWord);
+        ResultsOfGuess wordsToBeSearched = new ResultsOfGuess();
 
         // establish the possible actions
         UserInterface control = new UserInterface();
 
         // welcome
-        control.printGreeting(selectedWord);
+        control.printGreeting();
 
         while(!wordsToBeSearched.allLettersFound()) {
             System.out.println(control.getCommands(0));
             String input = control.getStringInput();
-            if (selectedWord.contains(input)) {
+            if (wordList.getWord().contains(input)) {
                 System.out.println(control.getCommands(1));
                 System.out.println(wordsToBeSearched.revealLetters(input));
             }

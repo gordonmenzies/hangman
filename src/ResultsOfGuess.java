@@ -1,16 +1,14 @@
 import java.util.Arrays;
 
-public class ResultsOfGuess {
+public class ResultsOfGuess extends Game {
 
-    private final String selectedWord;
     private final char[] letterIndex;
     private char[] guesses;
 
-    public ResultsOfGuess(String selectedString) {
-        this.selectedWord = selectedString;
-        this.letterIndex = new char[selectedString.length()];
+    public ResultsOfGuess() {
+        this.letterIndex = new char[super.selectedWord.length()];
         Arrays.fill(letterIndex, '_');
-        this.guesses = new char[selectedString.length()];
+        this.guesses = new char[super.selectedWord.length()];
     }
 
     public boolean allLettersFound() {
@@ -24,8 +22,8 @@ public class ResultsOfGuess {
 
     public String revealLetters(String newLetter) {
         char preppedNewLetter = newLetter.toLowerCase().charAt(0);
-        for(int i = 0; i < selectedWord.length(); i++) {
-            if (selectedWord.charAt(i) == preppedNewLetter) {
+        for(int i = 0; i < super.selectedWord.length(); i++) {
+            if (super.selectedWord.charAt(i) == preppedNewLetter) {
                 letterIndex[i] = preppedNewLetter;
             }
         }

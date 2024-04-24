@@ -1,7 +1,7 @@
 public class Game {
 
     private final String[] listOfWords = {"Chicken", "Tomboy", "Neanderthal"};
-
+    protected String selectedWord;
 
     private int generateRandomNumber() {
         int min = 0;
@@ -9,9 +9,13 @@ public class Game {
         return (int) (Math.random() * (max - min + 1)) + min;
     }
 
-    public String getWord() {
+    public void selectRandomWord() {
         int selected = generateRandomNumber();
-        return listOfWords[selected].toLowerCase();
+        selectedWord = listOfWords[selected].toLowerCase();
+    }
+
+    public String getWord() {
+        return selectedWord;
     }
 
 }

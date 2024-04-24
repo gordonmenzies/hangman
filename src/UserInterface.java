@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class UserInterface {
+public class UserInterface extends Game {
 
     private final Scanner scanner = new Scanner(System.in);
     private final String[] commands = {"please enter a single letter and press enter","Correct", "Incorrect, you lose a life.", "Well done you won"};
@@ -10,11 +10,10 @@ public class UserInterface {
         return commands[input];
     }
 
-    public void printGreeting(String selectedWord) {
+    public void printGreeting() {
         System.out.println("Welcome to Hangman! The clue to your word is laid out below.");
         System.out.println("You have " + numberOflives + " lives");
-        System.out.println("selected word: " + selectedWord);
-        for (int i= 0; i < selectedWord.length(); i++) {
+        for (int i= 0; i < super.selectedWord.length(); i++) {
             System.out.print("_");
         }
         System.out.println();
