@@ -1,4 +1,4 @@
-public class PossibleWords {
+public class Game {
 
     private final String[] listOfWords = {"Chicken", "Tomboy", "Neanderthal"};
 

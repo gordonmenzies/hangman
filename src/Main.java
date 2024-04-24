@@ -4,24 +4,17 @@ public class Main {
     public static void main(String[] args) {
 
         // select the word
-        PossibleWords wordList = new PossibleWords();
+        Game wordList = new Game();
         String selectedWord = wordList.getWord();
-
 
         // create the char array
         ResultsOfGuess wordsToBeSearched = new ResultsOfGuess(selectedWord);
 
-
         // establish the possible actions
         UserInterface control = new UserInterface();
-        String[] commandOptions = new String[] {"please enter a single letter and press enter","Correct", "Incorrect", "Well done you won"};
-        control.setCommands(commandOptions);
 
-
-        // WELCOME
+        // welcome
         control.printGreeting(selectedWord);
-
-
 
         while(!wordsToBeSearched.allLettersFound()) {
             System.out.println(control.getCommands(0));
@@ -32,6 +25,7 @@ public class Main {
             }
             else {
                 System.out.println(control.getCommands(2));
+
             }
         }
         System.out.println(control.getCommands(3));
