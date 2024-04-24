@@ -23,4 +23,6 @@ public class Main {
         System.out.println(firstCommand.getCommands(0));
         String input = firstCommand.getStringInput();
         }
+
+        // this is the only change on the branch Receiving-Input
     }
