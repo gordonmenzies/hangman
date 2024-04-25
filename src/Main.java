@@ -16,18 +16,34 @@ public class Main {
         // welcome
         control.printGreeting(selectedWord);
 
-        while(!wordsToBeSearched.allLettersFound()) {
+        while(!wordsToBeSearched.allLettersFound() && control.getLives() > 0) {
+            System.out.println("Previous incorrect guesses " + wordsToBeSearched.getGuesses());
             System.out.println(control.getCommands(0));
             String input = control.getStringInput();
-            if (selectedWord.contains(input)) {
+            if (selectedWord.contains(input) && wordsToBeSearched.checkIfPreviouslyGuessed(input)) {
+
                 System.out.println(control.getCommands(1));
+                System.out.println(wordsToBeSearched.revealLetters(input));
+            }
+            else if (selectedWord.contains(input) && !wordsToBeSearched.checkIfPreviouslyGuessed(input)) {
+                System.out.println(control.getCommands(5));
                 System.out.println(wordsToBeSearched.revealLetters(input));
             }
             else {
                 System.out.println(control.getCommands(2));
-                control.reduceNumberOfLives();
+                control.failedGuess();
+                wordsToBeSearched.saveGuess(input);
+                System.out.println(wordsToBeSearched.revealLetters(input));
+                control.printHangman();
             }
         }
-        System.out.println(control.getCommands(3));
+
+        if (control.getLives() == 0) {
+            System.out.println(control.getCommands(4));
+        }
+        else {
+            System.out.println(control.getCommands(3));
+        }
+
         }
     }

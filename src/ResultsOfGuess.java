@@ -4,13 +4,13 @@ public class ResultsOfGuess {
 
     private final String selectedWord;
     private final char[] letterIndex;
-    private char[] guesses;
+    private String guesses;
 
     public ResultsOfGuess(String selectedString) {
         this.selectedWord = selectedString;
         this.letterIndex = new char[selectedString.length()];
         Arrays.fill(letterIndex, '_');
-        this.guesses = new char[selectedString.length()];
+        this.guesses = "";
     }
 
     public boolean allLettersFound() {
@@ -30,5 +30,29 @@ public class ResultsOfGuess {
             }
         }
         return new String(letterIndex);
+    }
+
+    public void saveGuess(String guess) {
+        guesses = guesses + guess + " ";
+    }
+
+    public String getGuesses() {
+        if (guesses.isEmpty()) {
+            return "";
+        }
+        else {
+            return guesses;
+        }
+    }
+
+    public boolean checkIfPreviouslyGuessed(String input) {
+        char preppedLetter = input.charAt(0);
+        for (char letter : letterIndex) {
+            if (letter == preppedLetter) {
+                return false;
+            }
+
+        }
+        return true;
     }
 }
