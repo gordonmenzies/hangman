@@ -1,3 +1,5 @@
+package Hangman;
+
 import java.util.Arrays;
 
 public class ResultsOfGuess {
