@@ -1,6 +1,7 @@
 package Hangman;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class ResultsOfGuess {
 
@@ -39,7 +40,7 @@ public class ResultsOfGuess {
     }
 
     public String getGuesses() {
-        if (!guesses.isEmpty()) {
+        if (Objects.equals(guesses, "")) {
             return "";
         }
         else {

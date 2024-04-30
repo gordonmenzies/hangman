@@ -8,7 +8,7 @@ public class Hangman {
     private Words wordList;
     private String selectedWord;
     private ResultsOfGuess wordsToBeSearched;
-    private UserInterface control;
+    private final UserInterface control;
 
     public Hangman() {
         this.control = new UserInterface();
@@ -77,16 +77,26 @@ public class Hangman {
                 System.out.println(control.getCommands(3));
             }
             System.out.println(control.getCommands(6));
-            int finish = control.getLevelSelect();
-            if (finish == 2) {
-                endGame = true;
+            boolean restart = false;
+            while (!restart) {
+                int finish = control.getLevelSelect();
+                if (finish == 2) {
+                    endGame = true;
+                    restart = true;
+                }
+                else if (finish == 1) {
+                    control.setLives();
+                    selectedWord = wordList.getWord();
+                    wordsToBeSearched = new ResultsOfGuess(selectedWord);
+                    restart = true;
+                    control.getStringInput();
+
+                }
+                else {
+                    System.out.println("Please enter an input of either 1 or 2");
+                }
             }
-            else {
-                control.setLives();
-                selectedWord = wordList.getWord();
-                wordsToBeSearched = new ResultsOfGuess(selectedWord);
-                control.getStringInput();
-            }
+
         }
 
     }
