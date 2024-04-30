@@ -29,7 +29,6 @@ public class UserInterface {
     }
 
     public String getStringInput() {
-
         while (true) {
             try {
                 String letter = scanner.nextLine();

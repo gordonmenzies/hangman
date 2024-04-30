@@ -1,5 +1,6 @@
-package Hangman;
+package Hangman.Test;
 
+import Hangman.ResultsOfGuess;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,15 +28,15 @@ class ResultsOfGuessTest {
     @Test
     @DisplayName("allLettersFound_ReturnTrue_completeExample")
     void allLettersFound_returnTrue() {
-        String fullword = completeExample.revealLetters("c");
-        fullword = completeExample.revealLetters("c");
-        fullword = completeExample.revealLetters("o");
-        fullword = completeExample.revealLetters("m");
-        fullword = completeExample.revealLetters("p");
-        fullword = completeExample.revealLetters("l");
-        fullword = completeExample.revealLetters("e");
-        fullword = completeExample.revealLetters("t");
-        fullword = completeExample.revealLetters("e");
+        completeExample.revealLetters("c");
+        completeExample.revealLetters("c");
+        completeExample.revealLetters("o");
+        completeExample.revealLetters("m");
+        completeExample.revealLetters("p");
+        completeExample.revealLetters("l");
+        completeExample.revealLetters("e");
+        completeExample.revealLetters("t");
+        completeExample.revealLetters("e");
         boolean result = completeExample.allLettersFound();
         assertTrue(result);
     }
@@ -58,7 +59,7 @@ class ResultsOfGuessTest {
     @Test
     @DisplayName("checkPreviouslyGuessed_addLetter_underscoreExample")
     void checkIfPreviouslyGuessed() {
-        String result = underScoreExample.revealLetters("x");
+        underScoreExample.revealLetters("x");
         assertFalse(underScoreExample.checkIfPreviouslyGuessed("x"));
 
     }
