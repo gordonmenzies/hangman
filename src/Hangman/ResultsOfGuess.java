@@ -39,7 +39,7 @@ public class ResultsOfGuess {
     }
 
     public String getGuesses() {
-        if (guesses.isEmpty()) {
+        if (!guesses.isEmpty()) {
             return "";
         }
         else {

@@ -1,5 +1,9 @@
 package Hangman;
 
+import Hangman.Words.LevelOne;
+import Hangman.Words.LevelTwo;
+import Hangman.Words.Words;
+
 public class Hangman {
     private Words wordList;
     private String selectedWord;
@@ -86,4 +90,5 @@ public class Hangman {
         }
 
     }
+
 }
