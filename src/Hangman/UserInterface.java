@@ -1,11 +1,12 @@
 package Hangman;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
 
     private final Scanner scanner = new Scanner(System.in);
-    private final String[] commands = {"please enter a letter and press enter","Correct", "Incorrect, you lose a life.", "Well done you won", "You ran out of lives maybe play again?", "letter already guessed","press 1 to play again or press 2 to finish"};
+    private final String[] commands = {"please enter a single lowercase letter and press enter","Correct", "Incorrect, you lose a life.", "Well done you won", "You ran out of lives maybe play again?", "letter already guessed","press 1 to play again or press 2 to finish"};
     private int numberOflives = 3;
 
     public String getCommands(int input) {
@@ -23,11 +24,38 @@ public class UserInterface {
         System.out.println();
     }
 
-    public String getStringInput() {
-        return scanner.nextLine();
+    public void clearScanner() {
+        scanner.nextLine();
     }
+
+    public String getStringInput() {
+        while (true) {
+            try {
+                String letter = scanner.nextLine();
+                if (letter.length() == 1 && letter.matches("[a-z]"))  {
+                    return letter;
+                }
+                else {
+                    System.out.println("Invalid input. Please enter a single letter");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a single letter");
+            }
+        }
+     }
     public int getLevelSelect() {
-        return scanner.nextInt();
+        while (true) {
+            try {
+                int level = scanner.nextInt();
+                if (level == 1 || level == 2) {
+                    return level;
+                } else {
+                    System.out.println("Invalid input. Please enter either 1 or 2.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer value.");
+            }
+        }
     }
 
     public void failedGuess() {
@@ -38,6 +66,7 @@ public class UserInterface {
     public int getLives() {
         return numberOflives;
     }
+
     public void setLives() {
         numberOflives = 3;
     }

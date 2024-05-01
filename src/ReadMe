@@ -1,0 +1,7 @@
+A simple Hangman game.
+
+The game provides a clue as to a word with a range of underscores and the player is tasked with guessing the word by entering letters.
+When a correct letter is entered the underscore marking the position to the letter and the player can see they have answered correctly.
+
+This programme uses The Scanner Class to read the input of the user.
+
