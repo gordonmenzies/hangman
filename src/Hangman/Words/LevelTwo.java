@@ -1,7 +1,7 @@
 package Hangman.Words;
 
 public class LevelTwo extends Words {
-    private final String[] oneWords = {"Dynamite", "Tarantula", "Entropic"};
+    private final String[] oneWords = {"dynamite", "tarantula", "entropic", "illustrate","argumentative","intrepid","agnostic","impartial"};
 
     @Override
     public int generateRandomNumber() {
